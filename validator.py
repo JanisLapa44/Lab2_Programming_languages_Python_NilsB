@@ -24,6 +24,7 @@ def load_airports(path: str) -> set[str]:
         }
 
 def parse_dt(s: str) -> datetime | None:
+    #helper function for parsing datetime
     if not _DT.fullmatch(s):
         return None
     try:
@@ -38,6 +39,7 @@ def validate_row(fields: list[str], airports: set[str]) -> str | None:
     FIRST failing check (checks 1-11 in the specification, in order).
     Does not check for duplicates.
     """
+    # check each error type by its condition
     if len(fields) != 6:
         return "WRONG_FIELD_COUNT"
     fid, org, dst, dep, arr, price = (f.strip() for f in fields)

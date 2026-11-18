@@ -25,6 +25,7 @@ def parse_files(paths: list[str], airports: set[str]) -> tuple[list[dict], list[
     for path in paths:
         name = os.path.basename(path)
         with open(path, encoding="utf-8") as fh:
+            # check error paths, first line is header, skip if # is first non whitespace character
             for n, line in enumerate(fh, 1):
                 raw = line.rstrip("\r\n")
                 if n == 1:
